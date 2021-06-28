@@ -10,9 +10,8 @@ export default function handler(req, res) {
   }
 }
 
-const createUser = async ({ id, login, avatar_url }, onSuccess = () => {}) => {
+const createUser = async ({ id, login, avatar_url }) => {
   await db.collection("devs").add({
     id, login, avatar_url
   })
-  onSuccess()
 }
