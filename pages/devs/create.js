@@ -7,30 +7,24 @@ const Create = () => {
   const [error, setError] = useState(false)
   const router = useRouter()
 
+  const handleCreateUser = ({ id, login, avatar_url }) => {
+    axios.post(`/api/create`, { id, login, avatar_url })
+      .then(() => router.push('/'))
+      .catch(err => setError(true))
+  }
+
   const handleSubmit = async e => {
     e.preventDefault()
-    setError(false)
-    const res = await axios.get(`https://api.github.com/users/${login}`)
 
-    if (res.status === 200){
-      const { data } = res
-      const res2 = await axios.post(`/api/create`, {
-        id: data.id,
-        login: data.login,
-        avatar_url: data.avatar_url,
-      })
-
-      if (res2.status === 200) {
-        router.push('/')
-      }
-      else {
-        setError(true)
-      }
-    }
-
-    else {
+    if (login === "") {
       setError(true)
+      return
     }
+
+    setError(false)
+    axios.get(`https://api.github.com/users/${login}`)
+      .then(({ data }) => handleCreateUser(data))
+      .catch(err => setError(true))
   }
 
   return (
