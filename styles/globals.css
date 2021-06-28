@@ -19,3 +19,25 @@ a {
 form {
   margin: 20px;
 }
+
+.add-user-button {
+  margin-bottom: 20px;
+}
+
+.add-user-link {
+  padding: 4px 8px;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  border-radius: 4px;
+}
+
+.users-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 80vw;
+  margin: auto;
+}
+
+.users-grid-item {
+  flex: 1;
+}

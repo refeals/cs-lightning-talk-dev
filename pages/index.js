@@ -17,13 +17,13 @@ export default function Home({ devs }) {
           Cornershop Shopping Tech Frontend Dev List
         </h1>
 
-        <div style={{ marginBottom: 20 }}>
-          <Link href="/devs/create"><a>Add dev</a></Link>
+        <div className="add-user-button">
+          <Link href="/devs/create"><a className="add-user-link">Add dev</a></Link>
         </div>
 
-        <section>
+        <section className="users-grid">
           {devs.map(dev =>
-            <div key={dev.id}>
+            <div className="users-grid-item" key={dev.id}>
               <Link href={`/devs/${dev.login}`}>
                 <a>
                   <Image src={dev.avatar_url} alt={dev.login} width="200" height="200" />
