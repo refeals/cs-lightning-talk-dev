@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useRouter } from 'next/router'
-import { createUser } from "../../actions/createUser"
+import axios from "axios"
 
 const Create = () => {
   const [login, setLogin] = useState("")
@@ -10,13 +10,22 @@ const Create = () => {
   const handleSubmit = async e => {
     e.preventDefault()
     setError(false)
-    const res = await fetch(`https://api.github.com/users/${login}`)
+    const res = await axios.get(`https://api.github.com/users/${login}`)
 
-    if (res.ok){
-      const data = await res.json()
-      createUser(data, () => {
-        router.push('/')
+    if (res.status === 200){
+      const { data } = res
+      const res2 = await axios.post(`/api/create`, {
+        id: data.id,
+        login: data.login,
+        avatar_url: data.avatar_url,
       })
+
+      if (res2.status === 200) {
+        router.push('/')
+      }
+      else {
+        setError(true)
+      }
     }
 
     else {
