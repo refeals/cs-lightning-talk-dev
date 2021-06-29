@@ -1,5 +1,5 @@
 import firebaseClient from "firebase/app";
-import "firebase/firestore"
+import "firebase/firestore";
 
 const CLIENT_CONFIG = {
   apiKey: "",
@@ -7,7 +7,7 @@ const CLIENT_CONFIG = {
   projectId: "",
   storageBucket: "",
   messagingSenderId: "",
-  appId: ""
+  appId: "",
 };
 
 if (!firebaseClient.apps.length) {

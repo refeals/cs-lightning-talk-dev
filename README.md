@@ -8,13 +8,14 @@ Firebase was chosen for it's simplicity to create, to use and as means to persis
 
 The project gets data from Github API and add it to the Firestore, using differently on each page to show how different how each build type works.
 
-This was part of a live talk between coworkers, so no context or comments are given on any of  the files.
+This was part of a live talk between coworkers, so no context or comments are given on any of the files.
 
 ## Running the project locally
 
 You will need to create a new [Firebase application](https://console.firebase.google.com), then create a file `firebase-client.js` at the root of the project. You can duplicate and rename `firebase-client.example.js` to make it easier for you.
 
 Then, simply run
+
 ```bash
 yarn install
 yarn dev
